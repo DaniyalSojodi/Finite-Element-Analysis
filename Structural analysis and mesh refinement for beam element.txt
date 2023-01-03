@@ -1,0 +1,68 @@
+/clear
+i = 1
+*do,i,1,10
+/prep7
+
+!Defining material property
+et,1,beam188                                       				!Type of element
+keyopt,1,5,1	                                   				!
+l=7                                                				!Lenght
+mp,ex,1,2.07e11                                    				!Elastic modulus
+mp,prxy,1,0.3                                      				!Define nu
+
+!Defining keypoints to use to build a geometry
+k,1,0,0                                            
+k,2,l,0
+k,3,0,0,100
+
+!Creating line using the defined keypoints to build a geometry
+lstr,1,2
+
+!Defining cross sectional area of the geometry
+sectype,1,beam,rect,,0
+secdata,0.02,1,2,2
+secnum,1
+
+!Selecting lines, dividing them and meshing
+lsel,s,line,,1
+latt,1,,1,,3,,1
+
+!Dividing lines i times in respect to our do loop
+lesize,all,,,i
+
+!Mesh the geometry
+lmesh,all
+
+!Defining degree of freedom and forces applied
+dk,1,all
+fk,2,Mz,125000 
+
+eplot
+allsel
+
+finish
+/solu
+solve
+finish
+
+/post1
+set,last
+max_y=Uy(2)
+
+!Create a table based on what needed in our problem
+etable,sbzt,smisc,34,39
+
+!Get information that we need
+*get,max_stress,elem,1,etab,sbzt
+
+!Store information that we need in specified folder and send it to folder as a massage
+/output,C:\Users\Daniyel\Desktop\FEA_project\Deliverable4_result,txt,,append  
+*msg,info,i,max_stress,max_y
+nelem = %I, max_stress = %G, max_y = %G 
+
+
+/output
+finish
+/clear
+
+*enddo
