@@ -1,17 +1,5 @@
 # Finite-Element-Analysis
-
-function TwoD_triangular_elements()
-%{
-This is the main program, where a 2D triangular element model can be set,
-starting at Line 114.
-
-Test case statement: 
-Rectangular plate (L = 6 in.; H = 1 in; t = 1 in.) fixed on the left and
-loaded in right-ward horizontal (positive x) direction at the free tip
-by two 10,000-lbf forces (one at each node).
-Young's modulus = 30*10^6 psi.
-Poisson'ratio = 0.3.
-Find displacements at all nodes & stresses in all elements for plane strains.
+##In this project you will see the structural analysis of the beamm element using ANSYS APDL and MATLAB for plane183 and beam elements.
 
                          y         |\ |\ |\ |\ |
 Schematic:        |_ x    | \| \| \| \|
