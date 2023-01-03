@@ -1,5 +1,5 @@
 # Finite-Element-Analysis
-##In this project you will see the structural analysis of the beamm element using ANSYS APDL and MATLAB for plane183 and beam elements.
+##  In this project you will see the structural analysis of the beamm element using ANSYS APDL and MATLAB for plane183 and beam elements.
 
                          y         |\ |\ |\ |\ |
 Schematic:        |_ x    | \| \| \| \|
